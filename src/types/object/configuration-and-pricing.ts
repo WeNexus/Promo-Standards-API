@@ -26,7 +26,7 @@ export interface Part {
 }
 
 export interface PartPriceArray {
-  PartPrice: PartPrice;
+  PartPrice: PartPrice[];
 }
 
 export interface PartPrice {
@@ -39,7 +39,7 @@ export interface PartPrice {
 }
 
 export interface LocationIdArray {
-  LocationId: LocationId;
+  LocationId: LocationId[];
 }
 
 export interface LocationId {
@@ -47,7 +47,7 @@ export interface LocationId {
 }
 
 export interface LocationArray {
-  Location: Location;
+  Location: Location[];
 }
 
 export interface Location {
@@ -101,7 +101,7 @@ export interface Charge {
 }
 
 export interface ChargePriceArray {
-  ChargePrice: ChargePrice;
+  ChargePrice: ChargePrice[];
 }
 
 export interface ChargePrice {

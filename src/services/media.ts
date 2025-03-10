@@ -1,4 +1,5 @@
 import { GetMediaContentInput } from '@/types/input/get-media-content.js';
+import { MediaContent } from '@/types/object/media-content.js';
 import { MethodOptions } from '@/types/method-options.js';
 import { ServiceType } from '@/types/service-type.js';
 import { BaseService } from '@/services/base.js';
@@ -12,7 +13,7 @@ export class MediaService extends BaseService {
     return '1.0.0';
   }
 
-  async getMediaContent(options: MethodOptions<GetMediaContentInput>) {
+  async getMediaContent(options: MethodOptions<GetMediaContentInput>): Promise<MediaContent[]> {
     const response = await this.request({
       action: 'MediaContent',
       ...options

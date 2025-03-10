@@ -12,7 +12,16 @@ export abstract class BaseService {
   private static readonly endpointCache = new Map<string, Endpoint>();
   private readonly xmlParser = new XMLParser({
     trimValues: true,
-    removeNSPrefix: true
+    removeNSPrefix: true,
+    isArray(_, jPath) {
+      const lastIndexOfDot = jPath.lastIndexOf('.');
+
+      if (lastIndexOfDot === -1) {
+        return false;
+      }
+
+      return jPath.slice(0, lastIndexOfDot).endsWith('Array');
+    }
   });
   private readonly xmlBuilder = new XMLBuilder();
 

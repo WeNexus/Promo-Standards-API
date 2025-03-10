@@ -35,13 +35,13 @@ export interface Location {
 }
 
 export interface ClassTypeArray {
-  ClassType: ClassType
+  ClassType: ClassType[]
 }
 
 export interface DecorationArray {
-  Decoration: Decoration
+  Decoration: Decoration[]
 }
 
 export interface LocationArray {
-  Location: Location
+  Location: Location[]
 }

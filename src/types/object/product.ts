@@ -51,11 +51,11 @@ export interface ProductPriceGroupArray {
 }
 
 export interface ProductPriceArray {
-  ProductPrice: ProductPrice;
+  ProductPrice: ProductPrice[];
 }
 
 export interface LocationDecorationArray {
-  LocationDecoration: LocationDecoration;
+  LocationDecoration: LocationDecoration[];
 }
 
 export interface ProductPartArray {
@@ -71,7 +71,15 @@ export interface FobPointArray {
 }
 
 export interface ColorArray {
-  Color: Color;
+  Color: Color[];
+}
+
+export interface ProductPackagingArray {
+  ProductPackaging: ProductPackaging[];
+}
+
+export interface SpecificationArray {
+  Specification: Specification[];
 }
 
 export interface ProductKeyword {
@@ -141,14 +149,6 @@ export interface ProductPart {
   ApparelSize: ApparelSize;
   Dimension?: Dimension;
   SpecificationArray?: SpecificationArray;
-}
-
-export interface ProductPackagingArray {
-  ProductPackaging: ProductPackaging;
-}
-
-export interface SpecificationArray {
-  Specification: Specification;
 }
 
 export interface Dimension {
