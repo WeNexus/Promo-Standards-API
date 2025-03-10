@@ -6,6 +6,7 @@
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
