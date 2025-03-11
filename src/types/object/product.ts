@@ -98,8 +98,8 @@ export interface ProductCategory {
 
 export interface RelatedProduct {
   relationType: 'Substitute' | 'Companion Sell' | 'Common Grouping';
-  productId: number;
-  partId?: string;
+  productId: number | string;
+  partId?: string | number;
 }
 
 export interface ProductPrice {
@@ -123,7 +123,7 @@ export interface LocationDecoration {
 }
 
 export interface ProductPart {
-  partId: string;
+  partId: string | number;
   description?: string[];
   countryOfOrigin?: string;
   primaryMaterial?: string;
@@ -205,7 +205,7 @@ export interface ShippingPackage {
 }
 
 export interface FobPoint {
-  fobId: string;
+  fobId: string | number;
   fobCity: string;
   fobState: string;
   fobPostalCode: string;

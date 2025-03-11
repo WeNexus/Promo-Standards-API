@@ -2,7 +2,7 @@ import { CurrencyCode } from '@/types/input/get-configuration-and-pricing.js';
 import { CountryCode } from '@/types/input/locale.js';
 
 export interface FobPoint {
-  fobId: string;
+  fobId: string | number;
   fobPostalCode: string;
   fobCity: string;
   fobState: string;
@@ -16,7 +16,7 @@ export interface ProductArray {
 }
 
 export interface Product {
-  productId: string;
+  productId: string | number;
 }
 
 export interface CurrencySupportedArray {

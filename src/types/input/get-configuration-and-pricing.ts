@@ -3,7 +3,7 @@ import { LocaleInput } from '@/types/input/locale.js';
 export interface GetConfigurationAndPricingInput extends LocaleInput {
   productId: string;
   partId?: string;
-  fobId: string;
+  fobId: string | number;
   currency: CurrencyCode;
   priceType: PriceType;
   configurationType?: ConfigurationType;

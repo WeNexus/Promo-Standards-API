@@ -1,4 +1,4 @@
 export interface AvailableLocation {
-  locationId: number;
+  locationId: number | string;
   locationName: string;
 }

@@ -1,5 +1,5 @@
 export interface AvailableCharge {
-  chargeId: number;
+  chargeId: number | string;
   chargeName: string;
   chargeType: 'SETUP' | 'RUN' | 'ORDER';
   chargeDescription: string;

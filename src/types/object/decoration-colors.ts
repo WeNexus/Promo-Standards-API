@@ -1,6 +1,6 @@
 export interface DecorationColors {
   productId: string | number;
-  locationId: string;
+  locationId: string | number;
   pmsMatch: boolean;
   fullColor: boolean;
   ColorArray: ColorArray;
@@ -16,11 +16,11 @@ export interface DecorationMethodArray {
 }
 
 export interface Color {
-  colorId: string;
+  colorId: string | number;
   colorName: string;
 }
 
 export interface DecorationMethod {
-  decorationId: string;
+  decorationId: string | number;
   decorationName: string;
 }

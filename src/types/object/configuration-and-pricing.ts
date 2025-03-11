@@ -13,7 +13,7 @@ export interface PartArray {
 }
 
 export interface Part {
-  partId: string;
+  partId: string | number;
   partDescription?: string;
   partGroup: number;
   nextPartGroup?: number;
