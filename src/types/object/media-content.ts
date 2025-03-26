@@ -20,28 +20,28 @@ export interface MediaContent {
 }
 
 export interface ClassType {
-  classType: number
-  className: string
+  classType: number;
+  className: string;
 }
 
 export interface Decoration {
-  decorationId: number
-  decorationName: string
+  decorationId: number;
+  decorationName: string;
 }
 
 export interface Location {
-  locationId: number
-  locationName: string
+  locationId: number;
+  locationName: string;
 }
 
 export interface ClassTypeArray {
-  ClassType: ClassType[]
+  ClassType: ClassType[];
 }
 
 export interface DecorationArray {
-  Decoration: Decoration[]
+  Decoration: Decoration[];
 }
 
 export interface LocationArray {
-  Location: Location[]
+  Location: Location[];
 }

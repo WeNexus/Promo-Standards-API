@@ -9,15 +9,15 @@ export class MediaService extends BaseService {
   readonly type = ServiceType.MED;
   protected readonly wsVersion = '1.0.0';
 
-  protected nsVersion(): string {
-    return '1.0.0';
-  }
-
   async getMediaContent(options: MethodOptions<GetMediaContentInput>): Promise<MediaContent[]> {
     const response = await this.request({
       action: 'MediaContent',
       ...options
     });
     return response.MediaContentArray.MediaContent;
+  }
+
+  protected nsVersion(): string {
+    return '1.0.0';
   }
 }

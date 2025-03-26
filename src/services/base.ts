@@ -6,10 +6,10 @@ import { ServiceType } from '@/types/service-type.js';
 import { Environment } from '@/types/environment.js';
 
 export abstract class BaseService {
-  constructor(private readonly env: Environment = Environment.live) {
-  }
-
   private static readonly endpointCache = new Map<string, Endpoint>();
+  abstract readonly serviceName: string;
+  abstract readonly type: ServiceType;
+  protected abstract readonly wsVersion: string;
   private readonly xmlParser = new XMLParser({
     trimValues: true,
     removeNSPrefix: true,
@@ -25,11 +25,8 @@ export abstract class BaseService {
   });
   private readonly xmlBuilder = new XMLBuilder();
 
-  protected abstract readonly wsVersion: string;
-  abstract readonly serviceName: string;
-  abstract readonly type: ServiceType;
-
-  protected abstract nsVersion(apiVersion: string): string;
+  constructor(private readonly env: Environment = Environment.live) {
+  }
 
   static async getEndpoint<
     E extends Environment | undefined = undefined,
@@ -70,27 +67,6 @@ export abstract class BaseService {
     return endpoint[Environment[env]] as R;
   }
 
-  protected buildEnvelope(options: RequestOptions) {
-    const nsVersion = this.nsVersion(options.apiVersion);
-    const params = options.input ? this.xmlBuilder.build(options.input) : '';
-
-    return `
-      <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://www.promostandards.org/WSDL/${this.serviceName}/${nsVersion}/SharedObjects/">
-        <soap:Header/>
-        <soap:Body>
-          <Get${options.action}Request xmlns="http://www.promostandards.org/WSDL/${this.serviceName}/${nsVersion}/">
-            <wsVersion>${this.wsVersion}</wsVersion>
-
-            <id>${options.userId}</id>
-            <password>${options.password}</password>
-
-            ${params}
-          </Get${options.action}Request>
-        </soap:Body>
-      </soap:Envelope>
-    `;
-  }
-
   async request(options: RequestOptions) {
     const endpoint = await BaseService.getEndpoint(options.company, this.type, options.apiVersion, this.env);
     const envelope = this.buildEnvelope(options);
@@ -118,5 +94,28 @@ export abstract class BaseService {
     }
 
     return root;
+  }
+
+  protected abstract nsVersion(apiVersion: string): string;
+
+  protected buildEnvelope(options: RequestOptions) {
+    const nsVersion = this.nsVersion(options.apiVersion);
+    const params = options.input ? this.xmlBuilder.build(options.input) : '';
+
+    return `
+      <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://www.promostandards.org/WSDL/${this.serviceName}/${nsVersion}/SharedObjects/">
+        <soap:Header/>
+        <soap:Body>
+          <Get${options.action}Request xmlns="http://www.promostandards.org/WSDL/${this.serviceName}/${nsVersion}/">
+            <wsVersion>${this.wsVersion}</wsVersion>
+
+            <id>${options.userId}</id>
+            <password>${options.password}</password>
+
+            ${params}
+          </Get${options.action}Request>
+        </soap:Body>
+      </soap:Envelope>
+    `;
   }
 }

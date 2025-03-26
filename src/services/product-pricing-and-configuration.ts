@@ -15,10 +15,6 @@ export class ProductPricingAndConfigurationService extends BaseService {
   readonly type = ServiceType.PPC;
   protected readonly wsVersion = '1.0.0';
 
-  protected nsVersion(): string {
-    return '1.0.0';
-  }
-
   async getAvailableLocations(options: MethodOptions<GetAvailableLocationsInput>): Promise<AvailableLocation[]> {
     const response = await this.request({
       action: 'AvailableLocations',
@@ -58,5 +54,9 @@ export class ProductPricingAndConfigurationService extends BaseService {
     });
 
     return response.DecorationColors;
+  }
+
+  protected nsVersion(): string {
+    return '1.0.0';
   }
 }

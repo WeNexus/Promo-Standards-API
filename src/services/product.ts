@@ -14,10 +14,6 @@ export class ProductService extends BaseService {
   readonly type = ServiceType.Product;
   readonly wsVersion = '2.0.0';
 
-  protected nsVersion(apiVersion: string): string {
-    return apiVersion;
-  }
-
   async getProductSellable(options: MethodOptions<GetProductSellableInput | undefined>): Promise<ProductSellable[]> {
     const response = await this.request({
       action: 'ProductSellable',
@@ -59,6 +55,10 @@ export class ProductService extends BaseService {
       ...options
     });
     return response.ProductCloseOutArray.ProductCloseOut;
+  }
+
+  protected nsVersion(apiVersion: string): string {
+    return apiVersion;
   }
 }
 
