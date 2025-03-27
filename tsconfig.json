@@ -3,14 +3,16 @@
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
-    "module": "ESNext",
+    "module": "NodeNext",
     "target": "ESNext",
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "outDir": "./dist",
+    "removeComments": true
   },
   "include": [
     "src/**/*"

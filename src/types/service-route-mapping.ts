@@ -1,6 +1,6 @@
 import { FunctionKeys } from 'utility-types';
 
-export type ServiceRouteMapping<S> = {
+export type ServiceRouteMapping<S extends object> = {
   service: S;
   prefix: string;
   endpoints: {
