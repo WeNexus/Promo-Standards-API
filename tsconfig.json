@@ -9,10 +9,12 @@
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
     "outDir": "./dist",
-    "removeComments": true
+    "removeComments": true,
   },
   "include": [
     "src/**/*"
