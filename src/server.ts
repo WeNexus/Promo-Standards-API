@@ -6,9 +6,6 @@ import { CompanyCode } from '@/types/company-code.js';
 import { MediaService } from '@/services/media.js';
 import express, { RequestHandler } from 'express';
 import * as process from 'node:process';
-import dotEnv from 'dotenv';
-
-dotEnv.config();
 
 const app = express();
 const port = Number(process.env.PORT) || 8000;
@@ -17,14 +14,9 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-const pricingAndConfigurationService = new ProductPricingAndConfigurationService();
-const inventoryService = new InventoryService();
-const productService = new ProductService();
-const mediaService = new MediaService();
-
 const mappings = [
   {
-    service: productService,
+    service: new ProductService(),
     prefix: '/products',
     endpoints: [
       {
@@ -39,7 +31,7 @@ const mappings = [
     ]
   } as ServiceRouteMapping<ProductService>,
   {
-    service: mediaService,
+    service: new MediaService(),
     prefix: '/media',
     endpoints: [
       {
@@ -51,7 +43,7 @@ const mappings = [
     ]
   } as ServiceRouteMapping<MediaService>,
   {
-    service: inventoryService,
+    service: new InventoryService(),
     prefix: '/inventory',
     endpoints: [
       {
@@ -64,7 +56,7 @@ const mappings = [
     ]
   } as ServiceRouteMapping<InventoryService>,
   {
-    service: pricingAndConfigurationService,
+    service: new ProductPricingAndConfigurationService(),
     prefix: '/pricing-and-configuration',
     endpoints: [
       {
